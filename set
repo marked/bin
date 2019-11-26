@@ -14,7 +14,8 @@ while(defined $ARGV[0] && $ARGV[0] =~ /^-/) {
 
 while (my $line = <>) {
   chomp $line;
-  unless ( $debug || exists $set{$line}) {
+  next if $line eq "";
+  unless ($debug || exists $set{$line}) {
     print "$line\n";
   }
   $set{$line} += 1;
@@ -22,7 +23,7 @@ while (my $line = <>) {
 
 if ($debug) {
   foreach my $l (keys(%set)) {
-    my $count_str = "$set{$l} ";
-    print STDOUT "$count_str$l\n";
+    my $count_str = "$set{$l}";
+    print STDOUT "$count_str\t$l\n";
   }
 }

@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use autodie;
+
+my @lines = <>;
+
+@lines = sort {
+  length($a) == length($b) ? $a cmp $b : length($a) <=> length($b);
+} @lines;
+
+print @lines;

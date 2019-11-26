@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use autodie;
+
+my @fns = @ARGV;
+@ARGV = ();
+
+foreach my $fn (@fns) {
+  push @ARGV, $fn;
+  while (my $line = <>) {
+    print "$fn: $line";
+  }
+}

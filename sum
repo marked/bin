@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use autodie;
+
+my $total = 0;
+my @lines = <>;
+
+map { $total += $_ } @lines;
+
+
+print "Sum:\t$total\n";
+print "N:\t" . scalar @lines . "\n";
+print "Avg:\t" . $total / (scalar @lines) . "\n";

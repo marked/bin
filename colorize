@@ -1,0 +1,31 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use autodie;
+
+$| = 1;
+
+my $red_code     = "\033[91m";
+my $green_code   = "\033[92m";
+my $yellow_code  = "\033[93m";
+my $default_code = "\033[39m";
+
+while(my $line = <>) {
+  my $color_code = $default_code;
+
+  if ($line =~ /[0-9]=200/) {
+    $color_code = $green_code;
+  }
+
+  if ($line =~ /[0-9]=(403|500)/) {
+    $color_code = $red_code;
+  }
+
+  if ($line =~ /[0-9]=(404)/) {
+    $color_code = $yellow_code;
+  }
+
+  print $color_code;
+  print $line;
+  print $default_code;
+}
